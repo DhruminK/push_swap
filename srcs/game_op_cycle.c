@@ -6,64 +6,45 @@
 /*   By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 18:24:55 by dkhatri           #+#    #+#             */
-/*   Updated: 2019/08/15 19:18:51 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/08/17 17:33:21 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_op.h"
 
-int			rcycle(int *arr, int size)
+void			rrotate(t_list		**alst)
 {
-	int			le;
-	int			i;
-	int			tmp;
-	int			tmp1;
+	t_list		*ele;
+	t_list		*ele1;
 
-	if (!arr || size < 2)
-		return (0);
-	i = 0;
-	le = arr[size - 1];
-	tmp = arr[0];
-	while (i < size - 1)
+	if (!alst || !*alst)
+		return ;
+	ele = *alst;
+	ele1 = ele->next;
+	while (ele1->next)
 	{
-		tmp1 = arr[i + 1];
-		arr[i + 1] = tmp;
-		tmp = tmp1;
-		i = i + 1;
+		ele = ele->next;
+		ele1 = ele1->next;
 	}
-	arr[0] = le;
-	return (1);
+	ele->next = 0;
+	ele1->next = *alst;
+	*alst = ele1;
 }
 
-int			rrcycle(int *arr, int size)
+void			rotate(t_list		**alst)
 {
-	int			le;
-	int			i;
-	int			tmp;
-	int			tmp1;
+	t_list			*ele;
+	t_list			*fe;
+	t_list			*le;
 
-	if (!arr || size < 2)
-		return (0);
-	i = size - 1;
-	le = arr[0];
-	tmp = arr[size - 1];
-	while (i > 0)
-	{
-		tmp1 = arr[i - 1];
-		arr[i - 1] = tmp;
-		tmp =  tmp1;
-		i = i - 1;
-	}
-	arr[size - 1] = le;
-	return (1);
-}
-
-int			rotate(t_stack *a)
-{
-	return (rcycle(a->data, a->head + 1));
-}
-
-int			rrotate(t_stack *a)
-{
-	return (rrcycle(a->data, a->head + 1));
+	if (!alst || !*alst)
+		return ;
+	ele = *alst;
+	le = ele->next;
+	fe = ele->next;
+	while (le->next)
+		le = le->next;
+	le->next = ele;
+	ele->next = 0;
+	*alst = fe;
 }

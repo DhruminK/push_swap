@@ -6,71 +6,59 @@
 /*   By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 17:55:57 by dkhatri           #+#    #+#             */
-/*   Updated: 2019/08/15 19:16:40 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/08/17 18:56:40 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
 
-int			size_inc(int **arr, int data, int size)
+int			push(t_list **alst, int data)
 {
-	int			*new_arr;
-	int			i;
+	t_list		*ele;
 
-	if (size < 0)
-		return (0);
-	if (!(new_arr = (int*)malloc(sizeof(int) * (size + 1))))
+	if (!alst)
 		return (-1);
-	i = -1;
-	while (++i < size)
-		new_arr[i] = (*arr)[i];
-	new_arr[i] = data;
-	if (size != 0 && arr && *arr)
-		ft_memdel((void**)arr);
-	*arr = new_arr;
+	if (!(ele = ft_lstnew(&data, sizeof(int))))
+		return (-1);
+	ft_lstadd(alst, ele);
 	return (1);
 }
 
-int			size_dec(int **arr, int *data, int size)
+void		pop_del(void *content, size_t size)
 {
-	int			*new_arr;
-	int			i;
+	int		*d;
 
-	new_arr = 0;
-	i = 0;
-	if (size < 1)
+	d = (int*)content;
+	(void)size;
+	free(d);
+}
+
+int			top(t_list **alst, int *data)
+{
+	t_list		*ele;
+
+	if (!alst)
+		return (-1);
+	if (!*alst)
 		return (0);
-	if (size > 1)
-	{
-		if (!(new_arr = (int*)malloc(sizeof(int) * (size - 1))))
-			return (-1);
-		i = -1;
-		while (++i < size - 1)
-			new_arr[i] = (*arr)[i];
-	}
+	ele = *alst;
 	if (data)
-		*data = (*arr)[i];
-	ft_memdel((void**)arr);
-	*arr = new_arr;
+		*data = *((int*)ele->content);
 	return (1);
 }
 
-int			push(t_stack *stack, int data)
+int			pop(t_list **alst, int *data)
 {
-	if (!stack)
-		return (-1);
-	stack->head = stack->head + 1;
-	if (size_inc(&(stack->data), data, stack->head) < 1)
-		return (-1);
-	return (1);
-}
+	t_list			*ele;
 
-int			pop(t_stack *stack, int *data)
-{
-	if (!stack)
+	if (!alst)
 		return (-1);
-	if (size_dec(&(stack->data), data, stack->head + 1) < 1)
-		return (-1);
-	stack->head = stack->head - 1;
+	if (!*alst)
+		return (0);
+	ele = *alst;
+	*alst = ele->next;
+	if (data)
+		*data = *((int*)ele->content);
+	ft_lstdelone(&ele, &pop_del);
 	return (1);
 }
