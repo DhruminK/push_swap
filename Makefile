@@ -6,7 +6,7 @@
 #    By: trobicho <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/11 16:16:52 by trobicho          #+#    #+#              #
-#    Updated: 2019/08/17 16:21:19 by dkhatri          ###   ########.fr        #
+#    Updated: 2019/08/17 21:21:19 by dkhatri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,9 @@ SRCS = game_op.c ft_validate.c \
 		game_op_cycle.c get_next_line.c \
 		stack_op.c main.c sort.c
 
-INCLUDES = -I includes/ -I libft/
+INCLUDES = -I includes/ -I libft/includes
+
+LIBFT = 
 
 OBJS = $(SRCS:.c=.o)
 
@@ -31,19 +33,21 @@ NAME = push_swap
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	make -C libft
+$(NAME): abc libft $(OBJ)
 	$(CC) $(OBJ) $(CFLAGS) -lft -Llibft -o $(NAME)
+
+abc:
+	@$(MAKE) -C libft
 
 $(OBJS_PATH)%.o: $(SRCS_PATH)%.c
 	$(CC) $(INCLUDES) $(LIBFT) $(CFLAGS) -o $@ -c $<
 
 clean:
-	make -C libft clean
+	@$(MAKE) -C libft/ clean
 	rm -f $(OBJ)
 
 fclean: clean
-	make -C libft fclean
+	@$(MAKE) -C libft/ fclean
 	rm -f $(NAME)
 
 re: fclean all

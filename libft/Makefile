@@ -6,13 +6,15 @@
 #    By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/14 11:17:23 by dkhatri           #+#    #+#              #
-#    Updated: 2019/05/02 17:33:25 by dkhatri          ###   ########.fr        #
+#    Updated: 2019/08/17 21:15:41 by dkhatri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-FLAGS = -Wall -Wextra -Werror -c
+FLAGS = -Wall -Wextra -Werror
+
+INCLUDES = -I includes
 
 MANDATORY = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 			ft_memchr.c ft_memcmp.c ft_strlen.c ft_strdup.c ft_strcpy.c \
@@ -30,21 +32,28 @@ ADDITIONAL = ft_memalloc.c ft_memdel.c ft_strnew.c ft_strdel.c ft_strclr.c \
 BONUS = ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c \
 		ft_lstmap.c
 
+SRCC = $(MADATORY) $(ADDITIONAL) $(BONUS)
 SRCO = $(MANDATORY:.c=.o) $(ADDITIONAL:.c=.o) $(BONUS:.c=.o)
+
+SRC_PATH = srcs/
+OBJ_PATH = obj/
+
+OBJC = $(addprefix $(SRC_PATH), $(SRCC))
+OBJO = $(addprefix $(OBJ_PATH), $(SRCO))
 
 DEPS = libft.h
 
-%.o: %.c $(DEPS)
-	gcc $(FLAGS) $<
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c
+	gcc $(FLAGS) $(INCLUDES) -c $< -o $@
 
 all: $(NAME)
 
-$(NAME): $(SRCO)
-	ar -rc $(NAME) $(SRCO)
+$(NAME): $(OBJO)
+	ar -rc $(NAME) $(OBJO)
 	ranlib $(NAME)
 
 clean:
-	/bin/rm -f $(SRCO)
+	/bin/rm -f $(OBJO)
 
 fclean: clean
 	/bin/rm -f $(NAME)
