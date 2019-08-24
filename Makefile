@@ -6,7 +6,7 @@
 #    By: trobicho <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/11 16:16:52 by trobicho          #+#    #+#              #
-#    Updated: 2019/08/17 21:21:19 by dkhatri          ###   ########.fr        #
+#    Updated: 2019/08/24 18:54:24 by dkhatri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,11 +15,10 @@ CFLAGS = -Wall -Wextra -Werror
 
 SRCS = game_op.c ft_validate.c \
 		game_op_cycle.c get_next_line.c \
-		stack_op.c main.c sort.c
+		stack_op.c main.c sort.c \
+		lst_op.c
 
 INCLUDES = -I includes/ -I libft/includes
-
-LIBFT = 
 
 OBJS = $(SRCS:.c=.o)
 
@@ -31,16 +30,16 @@ OBJ = $(addprefix $(OBJS_PATH), $(OBJS))
 
 NAME = push_swap
 
-all: $(NAME)
+$(OBJS_PATH)%.o: $(SRCS_PATH)%.c
+	$(CC) $(INCLUDES) $(CFLAGS) -o $@ -c $<
 
-$(NAME): abc libft $(OBJ)
+all: abc $(NAME)
+
+$(NAME): $(OBJ)
 	$(CC) $(OBJ) $(CFLAGS) -lft -Llibft -o $(NAME)
 
 abc:
 	@$(MAKE) -C libft
-
-$(OBJS_PATH)%.o: $(SRCS_PATH)%.c
-	$(CC) $(INCLUDES) $(LIBFT) $(CFLAGS) -o $@ -c $<
 
 clean:
 	@$(MAKE) -C libft/ clean

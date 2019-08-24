@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate.h                                         :+:      :+:    :+:   */
+/*   list_op.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/17 15:09:50 by dkhatri           #+#    #+#             */
-/*   Updated: 2019/08/24 19:11:52 by dkhatri          ###   ########.fr       */
+/*   Created: 2019/08/18 18:15:42 by dkhatri           #+#    #+#             */
+/*   Updated: 2019/08/24 17:01:22 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VALIDATE_H
-# define VALIDATE_H
+#ifndef LIST_OP_H
 
-# include "stack.h"
-# include <limits.h>
+# define LIST_OP_H
+# include "libft.h"
 
-int				ft_validate(t_list **a, int ac, char **av);
+int				ft_lstlen(t_list *a);
+int				ft_lstcmp(t_list *a, t_list *b);
+int				ft_lstmax(t_list *a, int *max, int *min);
 
 #endif

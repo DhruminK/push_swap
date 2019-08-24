@@ -6,7 +6,7 @@
 /*   By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 18:58:52 by dkhatri           #+#    #+#             */
-/*   Updated: 2019/08/17 19:54:09 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/08/24 19:10:53 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int			main(int ac, char **av)
 {
 	t_list		*a;
 	t_list		*b;
+	int			i;
+	int			num;
 
 	init_stack(&a, &b);
 	if (!ft_validate(&a, ac, av))
@@ -41,10 +43,8 @@ int			main(int ac, char **av)
 		ft_putendl("Error");
 		return (1);
 	}
-	int				i;
-	int				num;
 	i = 0;
-	if (ft_sort(&a, &b, 0, 10) < 1)
+	if (ft_sort(&a, &b, 0, 100) < 1)
 	{
 		ft_del_stack(&a);
 		ft_del_stack(&b);
@@ -60,8 +60,6 @@ int			main(int ac, char **av)
 			ft_putendl("Error");
 			return (1);
 		}
-		ft_putnbr(num);
-		ft_putendl("");
 	}
 	ft_del_stack(&a);
 	ft_del_stack(&b);

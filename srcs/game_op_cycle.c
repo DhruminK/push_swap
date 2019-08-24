@@ -6,13 +6,13 @@
 /*   By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 18:24:55 by dkhatri           #+#    #+#             */
-/*   Updated: 2019/08/17 17:33:21 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/08/24 19:10:18 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_op.h"
 
-void			rrotate(t_list		**alst)
+void			rrotate(t_list **alst)
 {
 	t_list		*ele;
 	t_list		*ele1;
@@ -31,7 +31,7 @@ void			rrotate(t_list		**alst)
 	*alst = ele1;
 }
 
-void			rotate(t_list		**alst)
+void			rotate(t_list **alst)
 {
 	t_list			*ele;
 	t_list			*fe;
