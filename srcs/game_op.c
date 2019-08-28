@@ -6,7 +6,7 @@
 /*   By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 18:15:40 by dkhatri           #+#    #+#             */
-/*   Updated: 2019/08/17 17:31:41 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/08/26 15:48:12 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,17 @@ void		swap_stack(t_list **a)
 	*a = ele1;
 }
 
-void		swap(t_list **a, t_list **b)
+void		swap(t_list **a, int dir)
 {
-	if (a)
+	if (a && dir)
 	{
 		swap_stack(a);
 		ft_putendl("sa");
 	}
-	if (b)
+	if (a && !dir)
 	{
 		ft_putendl("sb");
-		swap_stack(b);
+		swap_stack(a);
 	}
 }
 

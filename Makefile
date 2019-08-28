@@ -6,7 +6,7 @@
 #    By: trobicho <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/11 16:16:52 by trobicho          #+#    #+#              #
-#    Updated: 2019/08/24 18:54:24 by dkhatri          ###   ########.fr        #
+#    Updated: 2019/08/28 16:27:53 by dkhatri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@ CFLAGS = -Wall -Wextra -Werror
 
 SRCS = game_op.c ft_validate.c \
 		game_op_cycle.c get_next_line.c \
-		stack_op.c main.c sort.c \
-		lst_op.c
+		stack_op.c main.c sort_2.c \
+		lst_op.c sort_util.c
 
 INCLUDES = -I includes/ -I libft/includes
 
