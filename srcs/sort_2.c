@@ -6,7 +6,7 @@
 /*   By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 15:06:02 by dkhatri           #+#    #+#             */
-/*   Updated: 2019/08/28 18:06:02 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/08/29 18:41:29 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,43 +22,6 @@ void			ft_print_stack(t_list *a)
 		a = a->next;
 	}
 	ft_putendl("++++++++++++++++++");
-}
-
-int				ft_single_sort(t_list **a, int *it, int dir)
-{
-	int				i;
-	int				s;
-	int				len;
-	int				max;
-
-	len = ft_lstlen(*a);
-	if (!a && !*a)
-		return (1);
-	if ((i = ft_is_sorted(*a, &s, dir)))
-		return (i);
-	if (!(i = ft_lstmax(*a, &max, 0)))
-		return (-1);
-	if ((*(int*)((*a)->content)) == max && !(it = 0))
-		return (2);
-	else if (s == 2)
-		return (3);
-	else if (s == 0)
-	{
-		swap(a, dir);
-		if (*it > 0)
-		{
-			*it = *it - 1;
-			return (3);
-		}
-	}
-	else if (s == 1 && (*it = *it + 1))
-		return (2);
-	else if (*it > 0)
-	{
-		*it = *it - 1;
-		return (3);
-	}
-	return (ft_single_sort(a, it, dir));
 }
 
 int				ft_init_b(t_list **a, t_list **b)
@@ -153,21 +116,25 @@ int				ft_sort(t_list **a, t_list **b)
 	int			resa;
 	int			resb;
 	int			len;
+	int			ma;
+	int			mb;
 
 	ita = 0;
 	itb = 0;
+	ma = 0;
+	mb = 0;
 	resb = 1;
 	len = ft_lstlen(*a);
-	if (len > 4 && !ft_init_b(a, b))
+	if (len > MAX_LEN && !ft_init_b(a, b))
 		return (0);
-	while ((resa = ft_single_sort(a, &ita, 1)) != 1 \
-			|| (len > 4 && (resb = ft_single_sort(b, &itb, 0)) != 1))
+	while ((resa = ft_single_sort(a, &ita, 1, &ma)) != 1 \
+			|| (len > MAX_LEN && (resb = ft_single_sort(b, &itb, 0, &mb)) != 1))
 	{
 		if (resa == -1 || resb == -1)
 			return (0);
 		ft_rotate(a, b, resa, resb);
 	}
-	if (len > 4 && !ft_deinit_b(a, b))
+	if (len > MAX_LEN && !ft_deinit_b(a, b))
 		return (0);
 	return (1);
 }
