@@ -6,11 +6,20 @@
 /*   By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 16:09:46 by dkhatri           #+#    #+#             */
-/*   Updated: 2019/08/29 17:51:39 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/08/29 20:41:23 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sort.h"
+
+void			swap_stack(t_list **a, int dir)
+{
+	if (dir)
+		ft_putendl("sa");
+	else
+		ft_putendl("sb");
+	swap(a);
+}
 
 int				ft_single_sort(t_list **a, int *it, int dir, int *m)
 {
@@ -36,7 +45,7 @@ int				ft_single_sort(t_list **a, int *it, int dir, int *m)
 	if ((i = ft_is_sorted(*a, &s, dir)))
 		return (i);
 	else if (s == 0 && (*m = 1))
-		swap(a, dir);
+		swap_stack(a, dir);
 	else if (s == 1 && (*it = *it + 1))
 		return (2);
 	else if (s == 2)

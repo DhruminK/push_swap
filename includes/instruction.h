@@ -1,36 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_op.c                                          :+:      :+:    :+:   */
+/*   instruction.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/15 18:15:40 by dkhatri           #+#    #+#             */
-/*   Updated: 2019/08/29 20:38:39 by dkhatri          ###   ########.fr       */
+/*   Created: 2019/08/29 20:08:21 by dkhatri           #+#    #+#             */
+/*   Updated: 2019/08/29 20:36:00 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game_op.h"
+#ifndef INSTRUCTION_H
+# define INSTRUCTION_H
 
-void		swap(t_list **a)
-{
-	t_list		*ele;
-	t_list		*ele1;
+# include "get_next_line.h"
+# include "game_op.h"
 
-	ele = *a;
-	ele1 = ele->next;
-	ele->next = ele1->next;
-	ele1->next = ele;
-	*a = ele1;
-}
+int			ft_get_ins(t_list **a, t_list **b);
 
-int			push_stack(t_list **a, t_list **b)
-{
-	int			d;
-
-	if (pop(a, &d) < 1)
-		return (0);
-	if (push(b, d) < 1)
-		return (0);
-	return (1);
-}
+#endif
