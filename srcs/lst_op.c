@@ -6,7 +6,7 @@
 /*   By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/18 18:11:33 by dkhatri           #+#    #+#             */
-/*   Updated: 2019/08/24 19:11:08 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/09/17 15:06:46 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,12 @@
 int			ft_lstlen(t_list *a)
 {
 	int		len;
-	t_list	*ele;
 
-	if (!a)
-		return (0);
 	len = 0;
-	ele = a;
-	while (ele)
+	while (a)
 	{
+		a = a->next;
 		len = len + 1;
-		ele = ele->next;
 	}
 	return (len);
 }
@@ -32,6 +28,11 @@ int			ft_lstlen(t_list *a)
 int			ft_lstcmp(t_list *a, t_list *b)
 {
 	return ((*((int*)(a->content))) - (*((int*)(b->content))));
+}
+
+int			ft_lstdata(t_list *a)
+{
+	return (*((int*)(a->content)));
 }
 
 int			ft_lstmax(t_list *a, int *max, int *min)

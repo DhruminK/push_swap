@@ -6,7 +6,7 @@
 /*   By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 18:58:52 by dkhatri           #+#    #+#             */
-/*   Updated: 2019/08/29 20:20:04 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/09/17 15:43:11 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int			main(int ac, char **av)
 	t_list		*a;
 	t_list		*b;
 	int			i;
-	int			num;
 
 	init_stack(&a, &b);
 	if (ac == 1)
@@ -45,29 +44,13 @@ int			main(int ac, char **av)
 		ft_putendl("Error");
 		return (1);
 	}
-	i = 0;
-	if (ft_is_sorted(a, &i, 1) == 0 && ft_sort(&a, &b) < 1)
+	if (ft_is_sorted(a, &i) == 0 || (i == 0 && ft_sort(&a, &b) < 1))
 	{
 		ft_del_stack(&a);
 		ft_del_stack(&b);
 		ft_putendl("Error");
 		return (1);
 	}
-//	ft_putendl("++++++++++++++++++++");
-	i = 0;
-	while (++i < ac)
-	{
-		if (pop(&a, &num) < 1)
-		{
-			ft_del_stack(&a);
-			ft_del_stack(&b);
-			ft_putendl("Error");
-			return (1);
-		}
-//		ft_putnbr(num);
-//		ft_putendl("");
-	}
-//	ft_putendl("++++++++++++++++++++++");
 	ft_del_stack(&a);
 	ft_del_stack(&b);
 	return (0);

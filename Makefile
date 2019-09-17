@@ -6,7 +6,7 @@
 #    By: trobicho <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/11 16:16:52 by trobicho          #+#    #+#              #
-#    Updated: 2019/08/29 20:58:46 by dkhatri          ###   ########.fr        #
+#    Updated: 2019/09/17 15:04:31 by dkhatri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@ CFLAGS = -Wall -Wextra -Werror
 
 SRCS = game_op.c ft_validate.c \
 		game_op_cycle.c get_next_line.c \
-		stack_op.c sort_2.c \
-		lst_op.c sort_util.c single_sort.c \
+		stack_op.c sort.c \
+		lst_op.c sort_util.c \
 		get_ins.c
 
 PS = main.c
