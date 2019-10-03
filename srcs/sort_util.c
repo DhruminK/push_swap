@@ -6,7 +6,7 @@
 /*   By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 16:24:56 by dkhatri           #+#    #+#             */
-/*   Updated: 2019/09/17 15:30:17 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/10/03 16:34:06 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@
 		a = a->next;
 	}
 	return (1);
-}*/
+}
 
-int			ft_conv_arr(t_list *a, int *arr, int len)
+static int			ft_conv_arr(t_list *a, int *arr, int len)
 {
 	int			i;
 
@@ -82,7 +82,7 @@ int			ft_find_median(t_list *a, int len, int *m)
 	}
 	*m = arr[len % 2 == 0 ? len / 2 : (((len + 1) / 2) - 1)];
 	return (1);
-}
+}*/
 
 void			ft_print_stack(t_list *a)
 {
@@ -96,16 +96,64 @@ void			ft_print_stack(t_list *a)
 	ft_putendl("++++++++++++++++++++++++++");
 }
 
-int				ft_is_sorted(t_list *a, int *s)
+void			ft_print_ab(t_list *a, t_list *b)
+{
+	int			i;
+
+	i = 0;
+	ft_putendl("+++++++++++++++++++++++++++");
+	while ((a || b) && (i = i + 1))
+	{
+		if (a)
+		{
+			ft_putnbr(ft_lstdata(a));
+			a = a->next;
+		}
+		else
+			ft_putstr("  ");
+		ft_putstr("     ");
+		if (b)
+		{
+			ft_putnbr(ft_lstdata(b));
+			b = b->next;
+		}
+		else
+			ft_putstr("  ");
+		ft_putendl("");
+	}
+	ft_putstr("LENGTH : ");
+	ft_putnbr(i);
+	ft_putendl("\n+++++++++++++++++++++++++++");
+}
+
+int				ft_is_sorted(t_list *a, int *s, int dir)
 {
 	if (!a || !s)
 		return (0);
 	*s = 1;
 	while (a->next)
 	{
-		if (ft_lstcmp(a, a->next) > 0 && !(*s = 0))
+		if (((dir && ft_lstcmp(a, a->next) > 0) \
+					|| (!dir && ft_lstcmp(a, a->next) < 0)) \
+				&& !(*s = 0))
 			break ;
 		a = a->next;
 	}
+	return (1);
+}
+
+int				ft_find_last(t_list *a, int len, int *num)
+{
+	int				i;
+
+	if (!a)
+		return (0);
+	i = 1;
+	while (a && i++ < len)
+		a = a->next;
+	if (!a)
+		return (0);
+	if (num)
+		*num = ft_lstdata(a);
 	return (1);
 }

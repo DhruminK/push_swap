@@ -6,7 +6,7 @@
 /*   By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/18 18:11:33 by dkhatri           #+#    #+#             */
-/*   Updated: 2019/09/17 15:06:46 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/09/25 17:09:47 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@ int			ft_lstcmp(t_list *a, t_list *b)
 int			ft_lstdata(t_list *a)
 {
 	return (*((int*)(a->content)));
+}
+
+int			ft_lstcmp_num(t_list *a, int num)
+{
+	return (ft_lstdata(a) - (num));
 }
 
 int			ft_lstmax(t_list *a, int *max, int *min)
