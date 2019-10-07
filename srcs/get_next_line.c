@@ -6,7 +6,7 @@
 /*   By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 16:13:26 by dkhatri           #+#    #+#             */
-/*   Updated: 2019/05/21 15:47:57 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/10/07 18:15:24 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ static int		ft_find_line(const int fd, char *tmp, char **line, t_g_inf inf)
 	{
 		free(buf);
 		if (result == 0 && tmp && (*line = tmp))
-			return (1);
+			return (0);
 		return (result);
 	}
 	buf[result] = '\0';
