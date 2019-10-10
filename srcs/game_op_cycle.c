@@ -6,7 +6,7 @@
 /*   By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 18:24:55 by dkhatri           #+#    #+#             */
-/*   Updated: 2019/08/24 19:10:18 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/10/10 13:47:24 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void			rrotate(t_list **alst)
 	if (!alst || !*alst)
 		return ;
 	ele = *alst;
-	ele1 = ele->next;
+	if (!(ele1 = ele->next))
+		return ;
 	while (ele1->next)
 	{
 		ele = ele->next;
@@ -40,7 +41,8 @@ void			rotate(t_list **alst)
 	if (!alst || !*alst)
 		return ;
 	ele = *alst;
-	le = ele->next;
+	if (!(le = ele->next))
+		return ;
 	fe = ele->next;
 	while (le->next)
 		le = le->next;
