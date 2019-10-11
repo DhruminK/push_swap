@@ -6,7 +6,7 @@
 /*   By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 18:58:52 by dkhatri           #+#    #+#             */
-/*   Updated: 2019/10/07 17:53:03 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/10/11 17:35:42 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int			main(int ac, char **av)
 		ft_putendl_fd("Error", 2);
 		return (1);
 	}
-	if (ft_is_sorted(a, &i, 1) == 0)
+	if (ft_is_sorted(a, &i, 1, -1) == 0)
 	{
 		ft_del_stack(&a);
 		ft_del_stack(&b);

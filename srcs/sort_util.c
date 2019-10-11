@@ -6,7 +6,7 @@
 /*   By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 16:24:56 by dkhatri           #+#    #+#             */
-/*   Updated: 2019/10/03 16:34:06 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/10/11 17:33:07 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,12 +126,31 @@ void			ft_print_ab(t_list *a, t_list *b)
 	ft_putendl("\n+++++++++++++++++++++++++++");
 }
 
-int				ft_is_sorted(t_list *a, int *s, int dir)
+/*int				ft_is_sorted(t_list *a, int *s, int dir, int len)
 {
 	if (!a || !s)
 		return (0);
 	*s = 1;
 	while (a->next)
+	{
+		if (((dir && ft_lstcmp(a, a->next) > 0) \
+					|| (!dir && ft_lstcmp(a, a->next) < 0)) \
+				&& !(*s = 0))
+			break ;
+		a = a->next;
+	}
+	return (1);
+}*/
+
+int				ft_is_sorted(t_list *a, int *s, int dir, int len)
+{
+	int			tmp;
+
+	if (!a || !s)
+		return (0);
+	*s = 1;
+	tmp = len > 0 ? 1 : 0;
+	while (((tmp && len-- > 0) || !tmp) && a->next)
 	{
 		if (((dir && ft_lstcmp(a, a->next) > 0) \
 					|| (!dir && ft_lstcmp(a, a->next) < 0)) \

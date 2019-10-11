@@ -6,7 +6,7 @@
 /*   By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/05 15:54:10 by dkhatri           #+#    #+#             */
-/*   Updated: 2019/09/28 17:35:14 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/10/11 17:34:57 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int			ft_half_sort_insertion(t_list **a, t_list **b)
 	len = ft_lstlen(*a);
 	if (!ft_insertion_init_b(a, b, &len))
 		return (0);
-	if ((i = ft_is_sorted(*a, &s, 1)) && !s)
+	if ((i = ft_is_sorted(*a, &s, 1, -1)) && !s)
 		i = ft_sort_less(a);
 	if (!i)
 		return (0);

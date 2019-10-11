@@ -6,7 +6,7 @@
 /*   By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 16:20:37 by dkhatri           #+#    #+#             */
-/*   Updated: 2019/10/03 15:41:46 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/10/11 17:33:26 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # define MAX_LEN 4
 # define MIN_INSERTION 0
 
-int				ft_is_sorted(t_list *a, int *sort, int dir);
+int				ft_is_sorted(t_list *a, int *sort, int dir, int len);
 int				ft_sort(t_list **a, t_list **b);
 int				ft_find_median(t_list *a, int len, int *m);
 int				ft_single_sort(t_list **a, int *it, int d, int *m);
