@@ -6,7 +6,7 @@
 /*   By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 15:48:35 by dkhatri           #+#    #+#             */
-/*   Updated: 2019/10/11 19:47:01 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/10/12 19:53:22 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,9 @@ int			ft_push_b(t_list **a, t_list **b, int len, int *m)
 	while (++i <= len && k < len / 2)
 	{
 		if (ft_lstcmp_num(*a, num) < 0 && (k = k + 1))
-		{
-			ft_putendl("pb");
-			push_stack(a, b);
-		}
+			ps(a, b, 1);
 		else if ((j = j + 1))
-		{
-			ft_putendl("ra");
-			rotate(a);
-		}
+			rr(a, b, 1);
 	}
 	if (is_sorted)
 		ft_rra(a, j, "rra");
@@ -66,17 +60,11 @@ int			ft_push_a(t_list **a, t_list **b, int len, int *m)
 	int			k;
 
 	if (len == 2 && ft_lstcmp(*b, (*b)->next) < 0)
-	{
-		ft_putendl("sb");
-		swap(b);
-	}
+		ss(a, b, 0);
 	if (len < 3)
 	{
 		while (len-- > 0)
-		{
-			ft_putendl("pa");
-			push_stack(b, a);
-		}
+			ps(a, b, 0);
 		*m = ft_lstdata(*a);
 		return (1);
 	}
@@ -89,15 +77,9 @@ int			ft_push_a(t_list **a, t_list **b, int len, int *m)
 	while (++i <= len && k < len / 2)
 	{
 		if (ft_lstcmp_num(*b, num) > 0 && (k = k + 1))
-		{
-			ft_putendl("pa");
-			push_stack(b, a);
-		}
+			ps(a, b, 0);
 		else if ((j = j + 1))
-		{
-			ft_putendl("rb");
-			rotate(b);
-		}
+			rr(a, b, 0);
 	}
 	return (1);
 }
@@ -157,10 +139,7 @@ int			ft_deinit_piv(t_list **a, t_list **b, t_list **piv)
 		top(piv, &t1);
 		i = ft_find_num(*a, t0 , *piv ? &t1 : 0);
 		if (i == 2 && ft_lstcmp(*a, (*a)->next) > 0)
-		{
-			ft_putendl("sa");
-			swap(a);
-		}
+			ss(a, b, 1);
 		else if (i > 2 && ft_is_sorted(*a, &s, 1, i) && !s)
 		{
 			if (!ft_push_b(a, b, i, &tmp1))
@@ -172,10 +151,7 @@ int			ft_deinit_piv(t_list **a, t_list **b, t_list **piv)
 		if (i < 3 || (i > 2 && s))
 		{
 			while (i-- > 0)
-			{
-				ft_putendl("ra");
-				rotate(a);
-			}
+				rr(a, b, 1);
 		}
 	}
 	return (1);

@@ -6,7 +6,7 @@
 #    By: trobicho <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/11 16:16:52 by trobicho          #+#    #+#              #
-#    Updated: 2019/10/11 19:46:43 by dkhatri          ###   ########.fr        #
+#    Updated: 2019/10/12 19:56:20 by dkhatri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRCS = game_op.c ft_validate.c \
 		stack_op.c sort_bubble.c sort.c \
 		lst_op.c sort_util.c quicksort_arr.c \
 		get_ins.c sort_2.c sort_quick2.c \
-		sort_insertion.c
+		sort_insertion.c game_rules.c
 
 PS = main.c
 CH = checker_main.c
