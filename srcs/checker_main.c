@@ -6,7 +6,7 @@
 /*   By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 19:08:05 by dkhatri           #+#    #+#             */
-/*   Updated: 2019/10/11 17:36:05 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/10/14 15:32:29 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,11 @@ int				main(int ac, char **av)
 	t_list	*b;
 	int		i;
 
+	b = 0;
 	init_stack(&a, &b);
 	if (ac == 1)
 		return (0);
-	if (!ft_validate(&a, ac, av))
-	{
-		ft_del_stack(&a);
-		ft_putendl_fd("Error", 2);
-		return (1);
-	}
-	if (!ft_get_ins(&a, &b))
+	if (!ft_validate(&a, ac, av) || !ft_get_ins(&a, &b))
 	{
 		ft_del_stack(&a);
 		ft_del_stack(&b);

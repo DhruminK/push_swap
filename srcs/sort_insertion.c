@@ -6,7 +6,7 @@
 /*   By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/28 16:11:33 by dkhatri           #+#    #+#             */
-/*   Updated: 2019/10/11 17:35:29 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/10/14 15:47:15 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int					ft_sort3(t_list **a)
 	return ((i = ft_is_sorted(*a, &s, 1, -1)) && s ? 1 : ft_sort3(a));
 }
 
-int						ft_sort_less(t_list **a)
+int					ft_sort_less(t_list **a)
 {
 	int				len;
 	int				i;
@@ -95,7 +95,7 @@ int						ft_sort_less(t_list **a)
 	return (1);
 }
 
-int						ft_sort_insertion(t_list **a, t_list **b)
+int					ft_sort_insertion(t_list **a, t_list **b)
 {
 	int			len;
 

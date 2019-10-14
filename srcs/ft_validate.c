@@ -6,7 +6,7 @@
 /*   By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 14:57:54 by dkhatri           #+#    #+#             */
-/*   Updated: 2019/10/07 15:58:13 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/10/14 15:57:54 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,19 +74,20 @@ static int	ft_validate_one(t_list **a, char **av)
 	return (1);
 }
 
-static void	ft_strarrdel(char ***str)
+static int	ft_strarrdel(char ***str)
 {
 	int			i;
 	char		**s;
 
 	if (!str)
-		return ;
+		return (1);
 	i = -1;
 	s = *str;
 	while (s[++i])
 		ft_strdel(s + i);
 	free(s);
 	*str = 0;
+	return (1);
 }
 
 int			ft_validate(t_list **a, int ac, char **av)
@@ -99,9 +100,9 @@ int			ft_validate(t_list **a, int ac, char **av)
 	i = ac;
 	while (--i > 0)
 	{
-		if (!(str = ft_strsplit(av[i], ' ')))
+		if (!(str = ft_strsplit(av[i], ' ')) && ft_strarrdel(&str))
 			return (0);
-		if (!ft_validate_one(a, str))
+		if (!ft_validate_one(a, str) && ft_strarrdel(&str))
 			return (0);
 		ft_strarrdel(&str);
 	}

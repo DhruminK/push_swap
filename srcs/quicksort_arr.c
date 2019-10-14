@@ -6,7 +6,7 @@
 /*   By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 15:21:06 by dkhatri           #+#    #+#             */
-/*   Updated: 2019/10/03 16:25:18 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/10/14 15:45:00 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,13 @@ static int			ft_conv_arr(t_list *a, int *arr, int len)
 	return (1);
 }
 
-void				quicksort(int *arr, int start, int end)
+int					partition(int *arr, int start, int end)
 {
-	int				piv;
-	int				tmp;
-	int				i;
-	int				j;
+	int			piv;
+	int			tmp;
+	int			i;
+	int			j;
 
-	if (start >= end)
-		return ;
 	piv = arr[start];
 	i = start + 1;
 	j = end;
@@ -56,6 +54,16 @@ void				quicksort(int *arr, int start, int end)
 	}
 	arr[start] = arr[j];
 	arr[j] = piv;
+	return (j);
+}
+
+void				quicksort(int *arr, int start, int end)
+{
+	int				j;
+
+	if (start >= end)
+		return ;
+	j = partition(arr, start, end);
 	quicksort(arr, start, j - 1);
 	quicksort(arr, j + 1, end);
 }
