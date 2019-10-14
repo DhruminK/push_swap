@@ -6,7 +6,7 @@
 #    By: trobicho <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/11 16:16:52 by trobicho          #+#    #+#              #
-#    Updated: 2019/10/14 20:16:10 by dkhatri          ###   ########.fr        #
+#    Updated: 2019/10/14 20:49:11 by dkhatri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,15 +42,18 @@ DEPS = $(addprefix $(INC_PATH), $(INC))
 NAME_PS = push_swap
 NAME_CH = checker
 
-%.o: $(SRCS_PATH)%.c includes/main.h
-	$(CC) $(INCLUDES) $(CFLAGS) -o $(OBJS_PATH)$@ -c $<
+$(OBJS_PATH)%.o: $(SRCS_PATH)%.c $(DEPS)
+	$(CC) $(INCLUDES) $(CFLAGS) -o $@ -c $<
+
+$(INC_PATH)%.h:
+	@echo "$@"
 
 all: abc $(NAME_PS) $(NAME_CH)
 
-$(NAME_PS): $(ALOBJ)
+$(NAME_PS): $(OBJ)
 	$(CC) $(addprefix $(OBJS_PATH), $(OBJS)) $(addprefix $(OBJS_PATH), $(PS:.c=.o)) $(CFLAGS) -lft -Llibft -o $(NAME_PS)
 
-$(NAME_CH): $(ALOBJ)
+$(NAME_CH): $(OBJ)
 	$(CC) $(addprefix $(OBJS_PATH), $(OBJS)) $(addprefix $(OBJS_PATH), $(CH:.c=.o)) $(CFLAGS) -lft -Llibft -o $(NAME_CH)
 
 abc:
@@ -65,9 +68,5 @@ fclean: clean
 	rm -f $(NAME_PS) $(NAME_CH)
 
 re: fclean all
-
-vpath %.c srcs
-
-vpath %.h includes
 
 .PHONY: all clean fclean re
