@@ -6,7 +6,7 @@
 /*   By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 14:57:54 by dkhatri           #+#    #+#             */
-/*   Updated: 2019/10/14 15:57:54 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/10/14 17:55:10 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,17 @@
 
 static int	ft_isint(char *str)
 {
-	int			i;
+	char		*s;
+	int			len_s;
+	int			len_str;
 
-	i = 0;
-	if (!str || !str[0])
-		return (0);
-	if (!ft_isdigit(str[0]) && str[0] != '+' && str[0] != '-')
-		return (0);
-	while (str[++i])
-	{
-		if (!ft_isdigit(str[i]))
-			return (0);
-	}
-	if (i == 1 && !ft_isdigit(str[0]))
-		return (0);
-	return (1);
+	s = ft_itoa(ft_atoi(str));
+	len_s = ft_strlen(s);
+	len_str = ft_strlen(str);
+	ft_strdel(&s);
+	if (len_s == len_str)
+		return (1);
+	return (0);
 }
 
 static int	ft_finddup(char *str, t_list **a)
