@@ -6,7 +6,7 @@
 /*   By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 15:14:11 by dkhatri           #+#    #+#             */
-/*   Updated: 2019/10/15 15:17:05 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/10/15 15:57:53 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int			ft_isbound(char *str)
 {
 	int			len_str;
 	int			len_s;
-	char *s;
+	char		*s;
 
 	if ((len_str = ft_strlen(str)) < 9)
 		return (1);
