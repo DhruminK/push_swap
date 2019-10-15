@@ -6,14 +6,14 @@
 #    By: trobicho <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/11 16:16:52 by trobicho          #+#    #+#              #
-#    Updated: 2019/10/15 15:08:39 by dkhatri          ###   ########.fr        #
+#    Updated: 2019/10/15 15:42:42 by dkhatri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-SRCS = game_op.c ft_validate.c \
+SRCS = game_op.c ft_validate.c ft_validate_util.c \
 		game_op_cycle.c get_next_line.c \
 		stack_op.c sort_bubble.c sort.c \
 		lst_op.c sort_util.c quicksort_arr.c \
@@ -43,7 +43,8 @@ NAME_PS = push_swap
 NAME_CH = checker
 
 $(OBJS_PATH)%.o: $(SRCS_PATH)%.c $(DEPS)
-	$(CC) $(INCLUDES) $(CFLAGS) -o $@ -c $<
+	@$(CC) $(INCLUDES) $(CFLAGS) -o $@ -c $<
+	@echo "Compiling $< to $@ \033[1;32m[OK]\033[0m"
 
 $(INC_PATH)%.h:
 	@echo $<
@@ -51,21 +52,30 @@ $(INC_PATH)%.h:
 all: abc $(NAME_PS) $(NAME_CH)
 
 $(NAME_PS): $(OBJ)
-	$(CC) $(addprefix $(OBJS_PATH), $(OBJS)) $(addprefix $(OBJS_PATH), $(PS:.c=.o)) $(CFLAGS) -lft -Llibft -o $(NAME_PS)
+	@$(CC) $(addprefix $(OBJS_PATH), $(OBJS)) \
+		$(addprefix $(OBJS_PATH), $(PS:.c=.o)) \
+		$(CFLAGS) -lft -Llibft -o $(NAME_PS)
+	@echo "Compiling $@ \033[1;32m[OK]\033[0m"
 
 $(NAME_CH): $(OBJ)
-	$(CC) $(addprefix $(OBJS_PATH), $(OBJS)) $(addprefix $(OBJS_PATH), $(CH:.c=.o)) $(CFLAGS) -lft -Llibft -o $(NAME_CH)
+	@$(CC) $(addprefix $(OBJS_PATH), $(OBJS)) \
+		$(addprefix $(OBJS_PATH), $(CH:.c=.o)) \
+		$(CFLAGS) -lft -Llibft -o $(NAME_CH)
+	@echo "Compliling $@ \033[1;32m[OK]\033[0m"
 
 abc:
 	@$(MAKE) -C libft
 
 clean:
 	@$(MAKE) -C libft/ clean
-	rm -f $(OBJ)
+	@/bin/rm -f $(OBJ)
+	@echo "\033[1m$(NAME_PS)\033[0m \
+		: Cleaned $(OBJS_PATH) \033[1;32m[OK]\033[0m"
 
 fclean: clean
 	@$(MAKE) -C libft/ fclean
-	rm -f $(NAME_PS) $(NAME_CH)
+	@/bin/rm -f $(NAME_PS) $(NAME_CH)
+	@echo "$(NAME_PS) $(NAME_CH) binary deleted \033[1;32m[OK]\033[0m"
 
 re: fclean all
 

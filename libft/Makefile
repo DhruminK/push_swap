@@ -6,7 +6,7 @@
 #    By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/14 11:17:23 by dkhatri           #+#    #+#              #
-#    Updated: 2019/10/15 15:11:00 by dkhatri          ###   ########.fr        #
+#    Updated: 2019/10/15 15:42:56 by dkhatri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,18 +44,25 @@ OBJO = $(addprefix $(OBJ_PATH), $(SRCO))
 DEPS = libft.h
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c includes/libft.h
-	gcc $(FLAGS) $(INCLUDES) -c $< -o $@
+	@gcc $(FLAGS) $(INCLUDES) -c $< -o $@
+	@echo "\033[1m$(NAME)\033[0m \
+		: Compiling $< --> $@ \033[1;32m[OK]\033[0m"
 
 all: $(NAME)
 
 $(NAME): $(OBJO)
-	ar -rc $(NAME) $(OBJO)
-	ranlib $(NAME)
+	@ar -rc $(NAME) $(OBJO)
+	@echo "Compiling $@ \033[1;32m[OK]\033[0m"
+	@ranlib $(NAME)
+	@echo "Indexing $@ \033[1;32m[OK]\033[0m"
 
 clean:
-	/bin/rm -f $(OBJO)
+	@/bin/rm -f $(OBJO)
+	@echo "\033[1m$(NAME)\033[0m : \
+		$(OBJ_PATH) directory cleared \033[1;32m[OK]\033[0m"
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	@/bin/rm -f $(NAME)
+	@echo "$(NAME) binary removed \033[1;32m[OK]\033[0m"
 
-re: fclean all	
+re: fclean all
