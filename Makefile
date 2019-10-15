@@ -6,7 +6,7 @@
 #    By: trobicho <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/11 16:16:52 by trobicho          #+#    #+#              #
-#    Updated: 2019/10/14 20:49:11 by dkhatri          ###   ########.fr        #
+#    Updated: 2019/10/15 15:08:39 by dkhatri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ $(OBJS_PATH)%.o: $(SRCS_PATH)%.c $(DEPS)
 	$(CC) $(INCLUDES) $(CFLAGS) -o $@ -c $<
 
 $(INC_PATH)%.h:
-	@echo "$@"
+	@echo $<
 
 all: abc $(NAME_PS) $(NAME_CH)
 
