@@ -6,7 +6,7 @@
 #    By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/14 11:17:23 by dkhatri           #+#    #+#              #
-#    Updated: 2019/10/15 15:42:56 by dkhatri          ###   ########.fr        #
+#    Updated: 2019/10/15 16:02:35 by dkhatri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ OBJO = $(addprefix $(OBJ_PATH), $(SRCO))
 DEPS = libft.h
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c includes/libft.h
+	@mkdir $(OBJ_PATH) 2> /dev/null || true
 	@gcc $(FLAGS) $(INCLUDES) -c $< -o $@
 	@echo "\033[1m$(NAME)\033[0m \
 		: Compiling $< --> $@ \033[1;32m[OK]\033[0m"

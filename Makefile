@@ -6,7 +6,7 @@
 #    By: trobicho <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/11 16:16:52 by trobicho          #+#    #+#              #
-#    Updated: 2019/10/15 15:42:42 by dkhatri          ###   ########.fr        #
+#    Updated: 2019/10/15 16:04:36 by dkhatri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ NAME_PS = push_swap
 NAME_CH = checker
 
 $(OBJS_PATH)%.o: $(SRCS_PATH)%.c $(DEPS)
+	@mkdir $(OBJS_PATH) 2> /dev/null || true
 	@$(CC) $(INCLUDES) $(CFLAGS) -o $@ -c $<
 	@echo "Compiling $< to $@ \033[1;32m[OK]\033[0m"
 
@@ -61,7 +62,7 @@ $(NAME_CH): $(OBJ)
 	@$(CC) $(addprefix $(OBJS_PATH), $(OBJS)) \
 		$(addprefix $(OBJS_PATH), $(CH:.c=.o)) \
 		$(CFLAGS) -lft -Llibft -o $(NAME_CH)
-	@echo "Compliling $@ \033[1;32m[OK]\033[0m"
+	@echo "Compiling $@ \033[1;32m[OK]\033[0m"
 
 abc:
 	@$(MAKE) -C libft
